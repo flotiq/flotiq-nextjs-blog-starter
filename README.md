@@ -5,7 +5,7 @@
 # Next.js starter for blog with Flotiq source
 
 Kick off your project with this blog boilerplate. This starter ships with the main Next.js configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
-Check our live demo: [there will be link]
+Check our live demo: https://flotiq-nextjs-blog-starter.vercel.app.
 
 ## Quick start
 
