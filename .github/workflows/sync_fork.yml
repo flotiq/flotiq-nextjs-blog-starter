@@ -9,6 +9,8 @@ jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
-      - uses: anatawa12/fork-sync-all-branches@v1
+      - uses: tgymnich/fork-sync@v1.8
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          owner: flotiq
+          base: main
+          head: main
