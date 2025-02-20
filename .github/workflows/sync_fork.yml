@@ -2,15 +2,53 @@ name: Sync Fork
 
 on:
   schedule:
-    - cron: '0 1  * * *' # every day
-  workflow_dispatch: # on button click
+    - cron: '0 0 * * *' # Every day
+  workflow_dispatch: # Manual
 
 jobs:
   sync:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: tgymnich/fork-sync@v1.8
+      - name: Checkout forked repository
+        uses: actions/checkout@v4
         with:
-          owner: flotiq
-          base: main
-          head: main
+          fetch-depth: 0
+
+      - name: Add upstream remote
+        run: git remote add upstream https://github.com/flotiq/flotiq-nextjs-blog-starter.git
+        env: 
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPOSITORY: ${{ secrets.MAIN_REPOSITORY }}
+
+      - name: Fetch all branches from upstream
+        run: git fetch upstream
+        env: 
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set Git identity
+        run: |
+          git config --global user.email "github-actions@github.com"
+          git config --global user.name "GitHub Actions"
+
+      - name: Sync fork and add new branches
+        run: |
+          for branch in $(git branch -r | grep 'upstream/' | grep -v 'upstream/HEAD' | sed 's#upstream/##'); do
+            if [[ $branch == dependabot/* ]]; then
+              echo "Skipping branch: $branch"
+              continue
+            fi
+
+            if git show-ref --quiet --verify refs/heads/$branch || git show-ref --quiet --verify "refs/remotes/origin/$branch"; then
+              echo "Branch $branch exists. Syncing..."
+              git checkout --track origin/$branch 2>/dev/null || git checkout $branch
+              git rebase upstream/$branch || (echo "Rebase conflict, please resolve manually." && exit 1)
+              git push origin $branch --force
+            else
+              echo "Creating new branch: $branch"
+              git checkout -b $branch upstream/$branch
+              git push origin $branch
+            fi
+          done
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
