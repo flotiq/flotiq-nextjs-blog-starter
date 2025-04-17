@@ -106,11 +106,11 @@ Check our live demo: https://flotiq-nextjs-blog-starter.vercel.app.
 
 Deploy this starter with one click on [Vercel](https://vercel.com/):
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fflotiq%2Fflotiq-nextjs-blog-starter)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fhello-world&env=FLOTIQ_API_KEY,FLOTIQ_CLIENT_AUTH_KEY&envDescription=Variables%20needed%20for%20the%20application.&envLink=https%3A%2F%2Fgithub.com%2Fflotiq%2Fflotiq-nextjs-blog-starter%3Ftab%3Dreadme-ov-file%23env-variables)
 
 You can also deploy this project to [Heroku](https://www.heroku.com/) in 3 minutes:
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https%3A%2F%2Fgithub.com%2Fflotiq%2Fflotiq-nextjs-blog-starter)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://www.heroku.com/deploy?template=https://github.com/flotiq/flotiq-nextjs-blog-starter)
 
 Or to [Netlify](https://www.netlify.com/):
 
