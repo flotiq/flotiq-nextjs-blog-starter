@@ -5,12 +5,40 @@ import { flotiqApiClient } from "@/flotiq-api-client";
 import BlogPostCard from "./_components/BlogPostCard/BlogPostCard";
 
 export default async function Home() {
-  const posts = await flotiqApiClient.content.blogpost.list({
-    limit: 10,
-    hydrate: 1,
-    orderDirection: "desc",
-    orderBy: "internal.createdAt",
-  });
+
+  let posts;
+
+  try {
+    posts = await flotiqApiClient.content.blogpost.list({
+      limit: 10,
+      hydrate: 1,
+      orderDirection: "desc",
+      orderBy: "internal.createdAt",
+    });
+  } catch (e) {
+    console.error(
+      "Posts fetch failed. " +
+      "See setup guide https://github.com/flotiq/flotiq-nextjs-blog-starter?tab=readme-ov-file#quick-start \n",
+      e
+    );
+    return (
+      <div className="mt-6 text-gray-700 p-6 rounded-md shadow-md">
+        <p className="font-semibold">Failed to fetch data.</p>
+        <p>
+          Please ensure your Flotiq account and content are properly configured.<br />
+          <a
+            href="https://github.com/flotiq/flotiq-nextjs-blog-starter?tab=readme-ov-file#quick-start"
+            className="underline hover:text-blue-900 font-medium"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Quick start guide
+          </a>
+        </p>
+      </div>
+
+    );
+  }
 
   return (
     <>
