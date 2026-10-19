@@ -104,10 +104,10 @@
     "@eslint/core" "^0.17.0"
     levn "^0.4.1"
 
-"@flotiq/flotiq-api-sdk@^0.6.0":
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/@flotiq/flotiq-api-sdk/-/flotiq-api-sdk-0.6.0.tgz#bd00e5c57307ffba497be3712a455a7c032d0032"
-  integrity sha512-d5U8geK4EEtzEJGcQQ5lG1w5bYLfi7FoWPT+vtG+IdF7GUtkG9uH6Ud4b6xeuVbd3GcfbmDIO6Z4M17I37v3FQ==
+"@flotiq/flotiq-api-sdk@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@flotiq/flotiq-api-sdk/-/flotiq-api-sdk-1.1.2.tgz#c041d67a9cb9e907d4fd676b0cb8130c8a1410b1"
+  integrity sha512-Sj7mn977jlTLXHH6GuBOD8cH3mR+B/wmMICGXzqeCItgnYN3RKnNm0DRFgQLbAL4YI+9ipCpDVvef7Erj4IY3g==
   dependencies:
     dotenv-flow "^4.1.0"
     prettier "^3.3.3"
