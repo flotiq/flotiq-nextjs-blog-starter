@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@flotiq/flotiq-api-sdk": "^0.6.0",
+    "@flotiq/flotiq-api-sdk": "^1.1.2",
     "@flotiq/nextjs-addon": "^0.1.5",
     "moment": "^2.31.0",
     "next": "15.5.28",
